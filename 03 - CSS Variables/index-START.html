@@ -19,14 +19,18 @@
     <input id="base" type="color" name="base" value="#ffc600">
   </div>
 
-  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+ <div class="image">
+   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500" alt="">
+ </div>
 
   <style>
 
     /*
       misc styles, nothing to do with CSS variables
     */
-
+    :root{
+      
+    }
     body {
       text-align: center;
       background: #193549;
@@ -43,9 +47,39 @@
     input {
       width: 100px;
     }
+
+    .image{
+      position: relative;
+      z-index: 4;
+      width: 50px;
+      height: 50px;
+      margin: auto;
+    }
   </style>
 
   <script>
+    const spacing = document.getElementById("spacing");
+    const blure = document.getElementById("blur");
+    const base = document.getElementById("base");
+    const image = document.querySelector(".image");
+    const jsSpan = document.querySelector(".hl");
+
+    image.style.backgroundColor=`${base.value}`;
+    jsSpan.style.color=`${base.value}`;
+
+    spacing.addEventListener('input' , function(){
+        image.style.padding = spacing.value + "px";
+    });
+
+    blure.addEventListener('input' , function(){
+        image.style.filter = `blur(${blur.value}px)`;
+    });
+
+    base.addEventListener('input' , function(){
+        image.style.backgroundColor=`${base.value}`;
+        jsSpan.style.color=`${base.value}`;
+
+    });
   </script>
 
 </body>
